@@ -2,6 +2,14 @@
 
 Este projeto consiste em uma API RESTful desenvolvida com FastAPI, capaz de cadastrar e autenticar usuários, além de permitir a consulta de dados de terceiros (cotações do Índice Bovespa).
 
+## Alunos
+
+Anderson Soares Franco Júnior
+
+Vinícius Rodrigues de Freitas
+
+KIT-V
+
 ## Arquitetura
 
 O projeto segue uma arquitetura em camadas, utilizando:
