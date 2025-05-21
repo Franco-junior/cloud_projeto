@@ -1,0 +1,32 @@
+name: insper-cloud-projeto
+
+services:
+  app:
+    image: crowdi/insper-cloud-projeto:latest
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-cloudv}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-cloudv}
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=${POSTGRES_DB:-cloudv}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-insper_cloud_projeto_secretkey}
+    restart: always
+
+  db:
+    image: postgres:17
+    container_name: database
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-projeto}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-projeto}
+      - POSTGRES_DB=${POSTGRES_DB:-projeto}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  postgres_data: 
